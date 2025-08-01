@@ -78,7 +78,7 @@ export default function SearchPage() {
               <div
                 key={doc.id}
                 onClick={() => (window.location.href = `/doctor/${doc.id}`)}
-                className="cursor-pointer border rounded-lg ... hover:shadow-lg transition text-black"
+                className="cursor-pointer border rounded-lg p-4 hover:shadow-lg transition text-black bg-white"
               >
                 <h2 className="text-xl font-semibold">{doc.name}</h2>
                 <p className="text-sm text-black-600">{doc.speciality}</p>

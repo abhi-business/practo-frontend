@@ -47,7 +47,7 @@ export default function DoctorDetail() {
     <main className="min-h-screen bg-white px-6 py-8">
       <button
         onClick={() => router.back()}
-        className="mb-4 bg-gray-300 hover:bg-gray-400 px-3 py-1 rounded"
+        className="mb-4 bg-blue-300 hover:bg-gray-400 px-3 py-1 rounded cursor-pointer text-black"
       >
         ← Go Back
       </button>
@@ -82,14 +82,21 @@ export default function DoctorDetail() {
           {doctor.availableToday ? "Available Today" : "Not Available Today"}
         </p>
         <button
-          className="mt-4 bg-blue-600 text-black px-4 py-2 rounded hover:bg-blue-700 cursor-pointer"
-          onClick={() =>
-            router.push(
-              `/confirmation?name=${encodeURIComponent(
-                doctor.name
-              )}&clinic=${encodeURIComponent(doctor.clinic)}`
-            )
-          }
+          className={`mt-4 px-4 py-2 rounded ${
+            doctor.availableToday
+              ? "bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+              : "bg-gray-400 text-white cursor-not-allowed"
+          }`}
+          disabled={!doctor.availableToday}
+          onClick={() => {
+            if (doctor.availableToday) {
+              router.push(
+                `/confirmation?name=${encodeURIComponent(
+                  doctor.name
+                )}&clinic=${encodeURIComponent(doctor.clinic)}`
+              );
+            }
+          }}
         >
           Book Appointment
         </button>
